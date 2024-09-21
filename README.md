@@ -1,6 +1,6 @@
 <!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
-  <img height="50" src="./src/assets/image/logo/logo.png"/>
+  <img height="30" src="./src/assets/image/logo/logo.png"/>
 </div>
 <h3 align="center">React + Vite + Ant Design 实现的后台管理系统前端示例</h3>
 
