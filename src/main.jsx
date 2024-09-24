@@ -1,6 +1,5 @@
 import { createRoot } from 'react-dom/client';
 import MainApp from '@/App.jsx';
-
 // 由于 antd 组件的默认文案是英文，所以需要修改为中文
 import { ConfigProvider } from 'antd';
 // 中文支持
@@ -19,7 +18,6 @@ createRoot(document.getElementById('root')).render(
   <ConfigProvider locale={zhCN} theme={{
     hashed: false, // 禁用 css hash
     token: {
-      colorPrimary: '#001529',
       borderRadius: 0, // 圆角
       fontFamily: 'MiSans, serif', // 文字字体
       fontSize: 13, // 默认字号

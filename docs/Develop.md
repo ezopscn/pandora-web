@@ -54,5 +54,10 @@ npm install misans --save
 # 路由组件
 npm install react-router --save
 npm install react-router-dom --save
-```
 
+# 请求
+npm install axios --save
+
+# 数据共享和传递
+npm install valtio --save
+```

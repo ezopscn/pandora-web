@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ApiOutlined,
   AppstoreAddOutlined,
@@ -14,6 +14,10 @@ import {
 } from '@ant-design/icons';
 import { Avatar, Badge, Dropdown, Layout, Menu, Select } from 'antd';
 import { Logo } from '@/common/Image.jsx';
+import { Outlet, useLocation, useNavigate } from 'react-router';
+import { FooterText } from '@/common/Text.jsx';
+import { TreeFindPath } from '@/utils/Path.jsx';
+import { RouteRules } from '@/routes/RouteRules.jsx';
 
 const { Header, Content, Sider } = Layout;
 
@@ -29,7 +33,7 @@ function getItem(label, key, icon, children) {
 
 // 侧边菜单
 const siderMenus = [
-  getItem('集群概览', '1', <DesktopOutlined />),
+  getItem('集群概览', '/dashboard', <DesktopOutlined />),
   getItem('集群管理', '51', <KubernetesOutlined />),
   getItem('节点管理', '55', <ClusterOutlined />),
   getItem('名称空间', '56', <AppstoreAddOutlined />),
@@ -54,14 +58,14 @@ const siderMenus = [
     getItem('加密配置（Secret）', '542')
   ]),
   getItem('消息通知', '98', <BellOutlined />),
-  getItem('系统设置', '2', <SettingOutlined />, [
-    getItem('用户中心', '21'),
-    getItem('用户组别', '22'),
-    getItem('用户角色', '23'),
-    getItem('系统菜单', '24'),
-    getItem('系统接口', '25'),
-    getItem('权限配置', '26'),
-    getItem('系统设置', '27')
+  getItem('系统设置', '/system', <SettingOutlined />, [
+    getItem('用户中心', '/system/user'),
+    getItem('用户组别', '/system/group'),
+    getItem('用户角色', '/system/role'),
+    getItem('系统菜单', '/system/menu'),
+    getItem('系统接口', '/system/api'),
+    getItem('权限配置', '/system/permission'),
+    getItem('系统设置', '/system/setting')
   ]),
   getItem('获取帮助', '99', <QuestionCircleOutlined />)
 ];
@@ -75,15 +79,15 @@ const dropdownMenus = [
   },
   {
     label: (
-      <a target='_blank'>
-        消息中心<Badge size='small' count={5}></Badge>
+      <a target="_blank">
+        消息中心<Badge size="small" count={5}></Badge>
       </a>
     ),
     key: '1'
   },
   {
     label: (
-      <a target='_blank'>
+      <a target="_blank">
         个人资料
       </a>
     ),
@@ -99,7 +103,24 @@ const dropdownMenus = [
 ];
 
 const AdminLayout = () => {
+  // 菜单跳转
+  const navigate = useNavigate();
+  // 菜单展开收起状态
   const [collapsed, setCollapsed] = useState(false);
+  // 展开和收缩菜单宽度
+  const menuWidth = 230;
+  const menuCollapsedWidth = 60;
+
+  // 获取当前的请求路径，并监听该路径是否改变，如果改变则修改页面菜单数据
+  const { pathname } = useLocation(); // 当前页面
+  const [openKeys, setOpenKeys] = useState([pathname]); // 展开菜单，父级菜单
+  const [selectedKeys, setSelectedKeys] = useState([pathname]); // 选中菜单
+  useEffect(() => {
+    setOpenKeys(TreeFindPath(RouteRules, data => data.path === pathname));
+    setSelectedKeys(pathname);
+  }, [pathname]);
+
+  // 基础数据
   const namespaceData = {
     测试集群: ['kube-system', 'default', 'test'],
     生产集群: ['kube-system', 'default', 'prod']
@@ -116,12 +137,12 @@ const AdminLayout = () => {
   };
   return (
     <Layout>
-      <Header className='admin-header'>
-        <div className='admin-left'>
-          <div className='admin-logo'>
-            <img className="admin-unselect" src={Logo} alt='' />
+      <Header className="admin-header">
+        <div className="admin-left">
+          <div className="admin-logo">
+            <img className="admin-unselect" src={Logo} alt="" />
           </div>
-          <div className='admin-select'>
+          <div className="admin-select">
             <Select
               defaultValue={clusterData[0]}
               style={{
@@ -150,33 +171,42 @@ const AdminLayout = () => {
             />
           </div>
         </div>
-        <div className='admin-right'>
-          <Badge size='small' count={5}>
+        <div className="admin-right">
+          <Badge size="small" count={5}>
             <Dropdown menu={{
               items: dropdownMenus
             }}>
-              <Avatar shape='circle' size={30}
-                      src='https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png' />
+              <Avatar shape="circle" size={30}
+                      src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" />
             </Dropdown>
           </Badge>
         </div>
       </Header>
-      <Layout className='admin-main'>
-        <Sider className='admin-sider' theme='light' width={230} collapsedWidth={60} collapsible
-               collapsed={collapsed}
-               onCollapse={(value) => setCollapsed(value)}>
+      <Layout className="admin-main">
+        <Sider className="admin-sider" theme="light" width={menuWidth} collapsedWidth={menuCollapsedWidth} collapsible
+               collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
           <Menu
-            className='admin-menu'
-            mode='inline'
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['5']}
+            className="admin-menu"
+            mode="inline"
+            openKeys={openKeys}
+            onOpenChange={(key) => {
+              setOpenKeys(key); // 解决展开菜单问题
+            }}
+            selectedKeys={selectedKeys}
             items={siderMenus}
+            onClick={({ key }) => {
+              console.log(key);
+              navigate(key);
+            }}
           />
         </Sider>
-        <Layout className='admin-body'>
-          <Content className='admin-content'>
-            Content
+        <Layout className="admin-body">
+          <Content className="admin-content">
+            <Outlet />
           </Content>
+          <div className="admin-footer">
+            <FooterText />
+          </div>
         </Layout>
       </Layout>
     </Layout>
