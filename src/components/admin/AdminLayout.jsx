@@ -1,23 +1,11 @@
 import { useEffect, useState } from 'react';
-import {
-  ApiOutlined,
-  AppstoreAddOutlined,
-  BellOutlined,
-  ClusterOutlined,
-  DeploymentUnitOutlined,
-  DesktopOutlined,
-  FileProtectOutlined,
-  HddOutlined,
-  KubernetesOutlined,
-  QuestionCircleOutlined,
-  SettingOutlined
-} from '@ant-design/icons';
 import { Avatar, Badge, Dropdown, Layout, Menu, Select } from 'antd';
-import { Logo } from '@/common/Image.jsx';
+import { DefaultAvatar, Logo } from '@/common/Image.jsx';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import { FooterText } from '@/common/Text.jsx';
 import { TreeFindPath } from '@/utils/Path.jsx';
 import { RouteRules } from '@/routes/RouteRules.jsx';
+import { DynamicIcon } from '@/utils/IconLoad.jsx';
 
 const { Header, Content, Sider } = Layout;
 
@@ -33,11 +21,11 @@ function getItem(label, key, icon, children) {
 
 // 侧边菜单
 const siderMenus = [
-  getItem('集群概览', '/dashboard', <DesktopOutlined />),
-  getItem('集群管理', '51', <KubernetesOutlined />),
-  getItem('节点管理', '55', <ClusterOutlined />),
-  getItem('名称空间', '56', <AppstoreAddOutlined />),
-  getItem('工作负载', '52', <DeploymentUnitOutlined />, [
+  getItem('集群概览', '/dashboard', <DynamicIcon iconName={'DesktopOutlined'} />),
+  getItem('集群管理', '51', <DynamicIcon iconName={'KubernetesOutlined'} />),
+  getItem('节点管理', '55', <DynamicIcon iconName={'ClusterOutlined'} />),
+  getItem('名称空间', '56', <DynamicIcon iconName={'AppstoreAddOutlined'} />),
+  getItem('工作负载', '52', <DynamicIcon iconName={'DeploymentUnitOutlined'} />, [
     getItem('Pod', '521'),
     getItem('部署（Deployment）', '522'),
     getItem('守护进程（DaemonSet）', '523'),
@@ -45,20 +33,20 @@ const siderMenus = [
     getItem('普通任务（Job）', '525'),
     getItem('定时任务（CronJob）', '526')
   ]),
-  getItem('服务发现', '57', <ApiOutlined />, [
+  getItem('服务发现', '57', <DynamicIcon iconName={'ApiOutlined'} />, [
     getItem('服务（Service）', '571'),
     getItem('流量入口（Ingress）', '572')
   ]),
-  getItem('存储管理', '53', <HddOutlined />, [
+  getItem('存储管理', '53', <DynamicIcon iconName={'HddOutlined'} />, [
     getItem('持久卷（PV）', '531'),
     getItem('持久卷申领（PVC）', '532')
   ]),
-  getItem('配置管理', '54', <FileProtectOutlined />, [
+  getItem('配置管理', '54', <DynamicIcon iconName={'FileProtectOutlined'} />, [
     getItem('普通配置（ConfigMap）', '541'),
     getItem('加密配置（Secret）', '542')
   ]),
-  getItem('消息通知', '98', <BellOutlined />),
-  getItem('系统设置', '/system', <SettingOutlined />, [
+  getItem('消息通知', '98', <DynamicIcon iconName={'BellOutlined'} />),
+  getItem('系统设置', '/system', <DynamicIcon iconName={'SettingOutlined'} />, [
     getItem('用户中心', '/system/user'),
     getItem('用户组别', '/system/group'),
     getItem('用户角色', '/system/role'),
@@ -67,7 +55,7 @@ const siderMenus = [
     getItem('权限配置', '/system/permission'),
     getItem('系统设置', '/system/setting')
   ]),
-  getItem('获取帮助', '99', <QuestionCircleOutlined />)
+  getItem('获取帮助', '/help', <DynamicIcon iconName={'QuestionCircleOutlined'} />)
 ];
 
 // 下拉菜单
@@ -177,7 +165,7 @@ const AdminLayout = () => {
               items: dropdownMenus
             }}>
               <Avatar shape="circle" size={30}
-                      src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" />
+                      src={DefaultAvatar} />
             </Dropdown>
           </Badge>
         </div>
