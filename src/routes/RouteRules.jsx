@@ -119,7 +119,7 @@ export const RouteRules = [
           },
           {
             path: '/workload/daemon-set',
-            name: '守护进程（Daemon Set）',
+            name: '守护进程集（Daemon Set）',
             auth: true,
             element: RouteLazyLoad(React.lazy(() => import('../pages/workload/daemon-set/DaemonSet.jsx')))
           },

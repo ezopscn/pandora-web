@@ -2,7 +2,9 @@ import React from 'react';
 
 const Overview = () => {
   return (
-    <>Overview</>
+    <>
+      <h1>集群概览</h1>
+    </>
   );
 };
 

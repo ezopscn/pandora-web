@@ -39,7 +39,7 @@ const siderMenus = [
     getItem('Pod', '/workload/pod'),
     getItem('副本集（Replica Set）', '/workload/replica-set'),
     getItem('部署（Deployment）', '/workload/deployment'),
-    getItem('守护进程（Daemon Set）', '/workload/daemon-set'),
+    getItem('守护进程集（Daemon Set）', '/workload/daemon-set'),
     getItem('有状态集（Stateful Set）', '/workload/stateful-set'),
     getItem('普通任务（Job）', '/workload/job'),
     getItem('定时任务（Cron Job）', '/workload/cron-job')
