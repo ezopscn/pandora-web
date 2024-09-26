@@ -56,7 +56,7 @@ const siderMenus = [
   ]),
   getItem('配置管理', '/config', <DynamicIcon iconName={'FileProtectOutlined'} />, [
     getItem('普通配置（Config Map）', '/config/config-map'),
-    getItem('敏感配置（Secret）', '/config/config-secret')
+    getItem('敏感配置（Secret）', '/config/secret')
   ]),
   getItem('系统设置', '/system', <DynamicIcon iconName={'SettingOutlined'} />, [
     getItem('用户中心', '/system/user'),
