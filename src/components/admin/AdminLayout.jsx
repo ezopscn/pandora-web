@@ -21,31 +21,43 @@ function getItem(label, key, icon, children) {
 
 // 侧边菜单
 const siderMenus = [
-  getItem('集群概览', '/dashboard', <DynamicIcon iconName={'DesktopOutlined'} />),
-  getItem('集群管理', '51', <DynamicIcon iconName={'KubernetesOutlined'} />),
-  getItem('节点管理', '55', <DynamicIcon iconName={'ClusterOutlined'} />),
-  getItem('名称空间', '56', <DynamicIcon iconName={'AppstoreAddOutlined'} />),
-  getItem('工作负载', '52', <DynamicIcon iconName={'DeploymentUnitOutlined'} />, [
-    getItem('Pod', '521'),
-    getItem('部署（Deployment）', '522'),
-    getItem('守护进程（DaemonSet）', '523'),
-    getItem('有状态集（StatefulSet）', '524'),
-    getItem('普通任务（Job）', '525'),
-    getItem('定时任务（CronJob）', '526')
+  getItem('工作空间', '/dashboard', <DynamicIcon iconName={'DesktopOutlined'} />),
+  getItem('集群列表', '/clusters', <DynamicIcon iconName={'PartitionOutlined'} />),
+  getItem('集群管理', '/cluster', <DynamicIcon iconName={'KubernetesOutlined'} />, [
+    getItem('集群概览', '/cluster/overview'),
+    getItem('节点管理（Node）', '/cluster/node'),
+    getItem('名称空间（Namespace）', '/cluster/namespace'),
+    getItem('网络策略（Network Policy）', '/cluster/network-policy'),
+    getItem('角色（Role）', '/cluster/role'),
+    getItem('绑定（Role Binding）', '/cluster/role-binding'),
+    getItem('集群角色（Cluster Role）', '/cluster/cluster-role'),
+    getItem('集群绑定（Cluster Role Binding）', '/cluster/cluster-role-binding'),
+    getItem('服务账号（Service Account）', '/cluster/service-account'),
+    getItem('集群证书（Certificate）', '/cluster/certificate')
   ]),
-  getItem('服务发现', '57', <DynamicIcon iconName={'ApiOutlined'} />, [
-    getItem('服务（Service）', '571'),
-    getItem('流量入口（Ingress）', '572')
+  getItem('工作负载', '/workload', <DynamicIcon iconName={'DeploymentUnitOutlined'} />, [
+    getItem('Pod', '/workload/pod'),
+    getItem('副本集（Replica Set）', '/workload/replica-set'),
+    getItem('部署（Deployment）', '/workload/deployment'),
+    getItem('守护进程（Daemon Set）', '/workload/daemon-set'),
+    getItem('有状态集（Stateful Set）', '/workload/stateful-set'),
+    getItem('普通任务（Job）', '/workload/job'),
+    getItem('定时任务（Cron Job）', '/workload/cron-job')
   ]),
-  getItem('存储管理', '53', <DynamicIcon iconName={'HddOutlined'} />, [
-    getItem('持久卷（PV）', '531'),
-    getItem('持久卷申领（PVC）', '532')
+  getItem('服务发现', '/service', <DynamicIcon iconName={'ApiOutlined'} />, [
+    getItem('服务（Service）', '/service/svc'),
+    getItem('流量入口类（Ingress Class）', '/service/ingress-class'),
+    getItem('流量入口（Ingress）', '/service/ingress')
   ]),
-  getItem('配置管理', '54', <DynamicIcon iconName={'FileProtectOutlined'} />, [
-    getItem('普通配置（ConfigMap）', '541'),
-    getItem('加密配置（Secret）', '542')
+  getItem('存储管理', '/storage', <DynamicIcon iconName={'HddOutlined'} />, [
+    getItem('存储类（Storage Class）', '/storage/class'),
+    getItem('持久卷（Persistent Volume）', '/storage/persistent-volume'),
+    getItem('持久卷申领（Persistent Volume Claim）', '/storage/persistent-volume-claim')
   ]),
-  getItem('消息通知', '98', <DynamicIcon iconName={'BellOutlined'} />),
+  getItem('配置管理', '/config', <DynamicIcon iconName={'FileProtectOutlined'} />, [
+    getItem('普通配置（Config Map）', '/config/config-map'),
+    getItem('敏感配置（Secret）', '/config/config-secret')
+  ]),
   getItem('系统设置', '/system', <DynamicIcon iconName={'SettingOutlined'} />, [
     getItem('用户中心', '/system/user'),
     getItem('用户组别', '/system/group'),
@@ -55,6 +67,7 @@ const siderMenus = [
     getItem('权限配置', '/system/permission'),
     getItem('系统设置', '/system/setting')
   ]),
+  getItem('消息通知', '/message', <DynamicIcon iconName={'BellOutlined'} />),
   getItem('获取帮助', '/help', <DynamicIcon iconName={'QuestionCircleOutlined'} />)
 ];
 

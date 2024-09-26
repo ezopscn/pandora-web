@@ -7,7 +7,7 @@ import {
   DesktopOutlined,
   FileProtectOutlined,
   HddOutlined,
-  KubernetesOutlined,
+  KubernetesOutlined, PartitionOutlined,
   QuestionCircleOutlined,
   SettingOutlined
 } from '@ant-design/icons';
@@ -25,7 +25,8 @@ export const IconMap = {
   FileProtectOutlined: FileProtectOutlined,
   BellOutlined: BellOutlined,
   QuestionCircleOutlined: QuestionCircleOutlined,
-  SettingOutlined: SettingOutlined
+  SettingOutlined: SettingOutlined,
+  PartitionOutlined: PartitionOutlined
 };
 
 // 生成 Icon
