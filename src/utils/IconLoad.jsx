@@ -7,7 +7,8 @@ import {
   DesktopOutlined,
   FileProtectOutlined,
   HddOutlined,
-  KubernetesOutlined, PartitionOutlined,
+  KubernetesOutlined,
+  PartitionOutlined,
   QuestionCircleOutlined,
   SettingOutlined
 } from '@ant-design/icons';

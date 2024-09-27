@@ -1,10 +1,14 @@
 import { Button, Col, Form, Input, Row, Select, Space, Table } from 'antd';
 import { ClearOutlined, DownOutlined, SearchOutlined, UserAddOutlined } from '@ant-design/icons';
 import { useState } from 'react';
+import { TitleSuffix } from '@/common/Text.jsx';
+import { Helmet } from 'react-helmet';
 
 const { Option } = Select;
 
 const User = () => {
+  const title = '用户中心' + TitleSuffix;
+
   const columns = [
     {
       title: 'Name',
@@ -91,7 +95,7 @@ const User = () => {
                 }
               ]}
             >
-              <Input placeholder="placeholder" />
+              <Input placeholder='placeholder' />
             </Form.Item>
           ) : (
             <Form.Item
@@ -103,11 +107,11 @@ const User = () => {
                   message: 'Select something!'
                 }
               ]}
-              initialValue="1"
+              initialValue='1'
             >
               <Select>
-                <Option value="1">111</Option>
-                <Option value="2">222</Option>
+                <Option value='1'>111</Option>
+                <Option value='2'>222</Option>
               </Select>
             </Form.Item>
           )}
@@ -122,23 +126,28 @@ const User = () => {
 
   return (
     <>
-      <div className="admin-page-header admin-unselect">
-        <div className="admin-page-title">用户中心 / USER MANAGEMENT.</div>
-        <div className="admin-page-desc">
+      <Helmet>
+        <title>{title}</title>
+        <meta name='description' content={title} />
+      </Helmet>
+      <div className='admin-page-header'>
+        <div className='admin-page-title'>用户中心 / USER MANAGEMENT.</div>
+        <div className='admin-page-desc'>
+          <div>用户是系统的核心资产之一，也是许多其它资源的强制依赖，所以对于用户的管理，我提供了以下的要求和建议，请知悉：</div>
           <ul>
-            <li>出于数据安全考虑，系统强制使用禁用用户替代删除用户。</li>
-            <li>对于某些特殊的用户，例如老板或者高管，我们建议隐藏其联系方式，保护个人隐私。</li>
+            <li>出于数据安全考虑，系统将强制使用禁用用户来替代删除用户，以此保证数据的可靠性和稳定性。</li>
+            <li>针对某些特殊的用户，例如老板、高管等，我们建议隐藏其联系方式，保护个人隐私。</li>
           </ul>
         </div>
       </div>
-      <div className="admin-page-main">
-        <div className="admin-page-search">
-          <Form form={form} name="advanced_search" onFinish={onFinish}>
+      <div className='admin-page-main'>
+        <div className='admin-page-search'>
+          <Form form={form} name='advanced_search' onFinish={onFinish}>
             <Row gutter={24}>
               {getFields()}
-              <Col span={6} key="x" style={{ marginTop: '10px' }}>
+              <Col span={6} key='x' style={{ marginTop: '10px' }}>
                 <Space>
-                  <Button icon={<SearchOutlined />} htmlType="submit">搜索用户</Button>
+                  <Button icon={<SearchOutlined />} htmlType='submit'>搜索用户</Button>
                   <Button icon={<ClearOutlined />} onClick={() => {
                     form.resetFields();
                   }}>清理条件</Button>
@@ -154,12 +163,12 @@ const User = () => {
             </Row>
           </Form>
         </div>
-        <div className="admin-page-list">
-          <div className="admin-page-btn-group">
+        <div className='admin-page-list'>
+          <div className='admin-page-btn-group'>
             <Button icon={<UserAddOutlined />}>添加用户</Button>
           </div>
           <Table
-            size="small"
+            size='small'
             rowSelection={{
               type: 'checkbox',
               ...rowSelection

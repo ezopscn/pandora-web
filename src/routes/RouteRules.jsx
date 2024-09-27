@@ -7,7 +7,7 @@ import RouteLazyLoad from '@/routes/RouteLazyLoad.jsx';
 export const RouteRules = [
   {
     path: '/', // 入口路由
-    element: <Navigate to='/dashboard' />, // 路由跳转，默认跳转到其它页面
+    element: <Navigate to="/dashboard" />, // 路由跳转，默认跳转到其它页面
     auth: false // 用于认证
   },
   {
@@ -320,7 +320,7 @@ export const RouteRules = [
   },
   {
     path: '*', // 没有匹配默认路由
-    element: <Navigate to='/error/404' />,
+    element: <Navigate to="/error/404" />,
     auth: false
   }
 ];
