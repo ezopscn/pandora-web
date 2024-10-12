@@ -2,7 +2,7 @@
 <div align="center">
   <img height="30" src="./src/assets/image/logo/logo.png"/>
 </div>
-<h3 align="center">React + Vite + Ant Design 实现的后台管理系统前端示例</h3>
+<h3 align="center">一个由 Go + React 开发的 Kubernetes 运维管理系统</h3>
 
 <p align="center">
   <a>
