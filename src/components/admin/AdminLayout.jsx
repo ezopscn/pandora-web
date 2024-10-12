@@ -27,7 +27,6 @@ const siderMenus = [
     getItem('集群概览', '/cluster/overview'),
     getItem('节点管理（Node）', '/cluster/node'),
     getItem('名称空间（Namespace）', '/cluster/namespace'),
-    getItem('网络策略（Network Policy）', '/cluster/network-policy'),
     getItem('角色（Role）', '/cluster/role'),
     getItem('绑定（Role Binding）', '/cluster/role-binding'),
     getItem('集群角色（Cluster Role）', '/cluster/cluster-role'),

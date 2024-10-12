@@ -51,12 +51,6 @@ export const RouteRules = [
             element: RouteLazyLoad(React.lazy(() => import('../pages/cluster/namespace/Namespace.jsx')))
           },
           {
-            path: '/cluster/network-policy',
-            name: '网络策略（Network Policy）',
-            auth: true,
-            element: RouteLazyLoad(React.lazy(() => import('../pages/cluster/network-policy/NetworkPolicy.jsx')))
-          },
-          {
             path: '/cluster/role',
             name: '角色（Role）',
             auth: true,

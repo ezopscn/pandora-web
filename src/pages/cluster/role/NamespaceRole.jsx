@@ -3,7 +3,7 @@ import React from 'react';
 const NamespaceRole = () => {
   return (
     <>
-      <div className="admin-page-header admin-unselect">
+      <div className="admin-page-header">
         <div className="admin-page-title">名称空间角色 / NAMESPACE ROLE.</div>
         <div className="admin-page-desc">
           <ul>

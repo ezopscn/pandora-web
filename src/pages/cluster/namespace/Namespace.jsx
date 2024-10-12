@@ -1,13 +1,16 @@
 const Namespace = () => {
   return (
     <>
-      <div className="admin-page-header admin-unselect">
+      <div className="admin-page-header">
         <div className="admin-page-title">名称空间 / NAMESPACE.</div>
         <div className="admin-page-desc">
-          <ul>
-            <li>出于数据安全考虑，系统强制使用禁用用户替代删除用户。</li>
-            <li>对于某些特殊的用户，例如老板或者高管，我们建议隐藏其联系方式，保护个人隐私。</li>
-          </ul>
+          <div>在 Kubernetes
+            中，名称空间（Namespace）提供一种机制，将同一集群中的资源划分为相互隔离的组。同一名称空间内的资源名称要唯一，但跨名称空间时没有这个要求。
+          </div>
+          <div>Kubernetes 启动时会创建四个初始名称空间：<b>default、kube-system、kube-public、kube-node-lease</b>，更多信息可以查看<a
+            target="_blank"
+            href="https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/namespaces/">官方文档</a>。
+          </div>
         </div>
       </div>
       <div className="admin-page-main"></div>
